@@ -1,0 +1,87 @@
+﻿<Window x:Class="RegistroPrestamos.Ul.Registro.rClientes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d"
+        Title="rClientes" Height="350" Width="450">
+    <Grid>
+        <StackPanel Margin="10,5,10,0">
+
+            <!--ID-->
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="ID:"  FontWeight="Bold"/>
+                <TextBox x:Name="IDTextBox" Margin="48,0" Text="0" Width="75" />
+
+                <Button x:Name = "BuscarButton" Margin="5,0"  Width="110" Click = "BuscarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/buscar.png" Width="20" Height="20"/>
+                        <Label Content="Buscar"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+
+            <!--Nombres-->
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Nombres:"  FontWeight="Bold"/>
+                <TextBox x:Name="NombresTextBox" Margin="10,0" Width="240" Text="{Binding Nombres}" />
+            </StackPanel>
+
+            <!--Telefono-->
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Telefono:"  FontWeight="Bold"/>
+                <TextBox x:Name="TelefonoTextBox" Margin="12,0" Width="240" Text="{Binding Telefono}"/>
+            </StackPanel>
+            <!--Cedula-->
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Cedula:"  FontWeight="Bold"/>
+                <TextBox x:Name="CedulaTextBox" Margin="20,0" Width="240" Text="{Binding Cedula}"/>
+            </StackPanel>
+
+            <!--Direccion-->
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Direccion:"  FontWeight="Bold"/>
+                <TextBox x:Name="DireccionTextBox" Margin="5,0" Width="240" Text="{Binding Direccion}"/>
+            </StackPanel>
+
+            <!--Fecha-->
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Balance:"  FontWeight="Bold"/>
+                <TextBox x:Name="BalanceTextBox" Margin="15,0" Width="240" IsEnabled="False" Text="{Binding Balance}"/>
+            </StackPanel>
+
+
+            <!--Botones-->
+            <StackPanel Orientation="Horizontal" Margin="0,15">
+                <Button x:Name="NuevoButton" Margin="10,0" Width="80" Click ="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/nuevo.png" Width="20" Height="20"/>
+                        <Label Content="Nuevo"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="EditarButton" Margin="10,0" Width="80" Click = "EditarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/editar.png" Width="20" Height="20"/>
+                        <Label Content="Editar"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="GuardarButton" Margin="10,0" Width="80" Click = "GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/guardar.png" Width="20" Height="20"/>
+                        <Label Content="Guardar"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="EliminarButton" Margin="10,0" Width="80" Click = "EliminarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/eliminar.png" Width="20" Height="20"/>
+                        <Label Content="Eliminar"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel> 
+    </Grid>
+</Window>
