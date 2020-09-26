@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+	<StartWorkingDirectory>$(MSBuildProjectDirectory)</StartWorkingDirectory>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="EntityFramework" Version="6.4.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		</ItemGroup>
+
+      
+  
+   
+  
+
+         <ItemGroup>
+       <None Update="DATA\Prueba.db">
+       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+       </ItemGroup>
+	
+  
+
+         <ItemGroup>
+           <Folder Include="Ul\Consultas\" />
+         </ItemGroup>
+
+ 
+
+	        <ItemGroup>
+
+              <None Remove="Resources/nuevo.png"/>
+              <None Remove="Resources/Guardar.png"/>
+              <None Remove="Resources/Eliminar.png"/>
+              <None Remove="Resources/Buscar.png"/>
+              <None Remove="Resources/editar.png"/>
+          </ItemGroup>
+
+           <ItemGroup>
+  
+            <Resource Include="Resources/Eliminar.png"/>
+            <Resource Include="Resources/Guardar.png"/>
+            <Resource Include="Resources/nuevo.png"/>
+            <Resource Include="Resources/Buscar.png"/>
+            <Resource Include="Resources/editar.png"/>
+
+          </ItemGroup>
+		
+
+		
+	
+	
+	
+
+	
+
+	 
+	
+
+
+</Project>
