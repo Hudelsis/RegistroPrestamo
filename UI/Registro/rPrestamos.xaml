@@ -1,0 +1,100 @@
+<Window x:Class="RegistroPrestamos.UI.Registro.rPrestamos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d"
+        Title="rPrestamos" Height="400" Width="450">
+    <Grid>
+        <StackPanel Margin="10,5,10,0">
+
+       
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content=" Prestamos ID:"  FontWeight="Bold"/>
+                <TextBox x:Name="IDTextBox" Margin="5,0" Text="0" Width="75" />
+
+                <Button x:Name = "BuscarButton" Margin="5,0"  Width="110" Click="BuscarButton_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/buscar.png" Width="20" Height="20"/>
+                        <Label Content="Buscar"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+
+           
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Fecha:"  FontWeight="Bold"/>
+                <DatePicker x:Name="FechaTextBox" Margin="50,0" Width="240" Text="{Binding Fecha}" />
+            </StackPanel> 
+
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content=" Persona ID:"  FontWeight="Bold"/>
+                <TextBox x:Name="IdPersonaTextBox" Margin="20,0" Text="0" Width="75" />
+
+                <Button x:Name = "BuscarPersonaButton" Margin="5,0"  Width="110" Click="BuscarPersonaButton_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/buscar.png" Width="20" Height="20"/>
+                        <Label Content="Buscar"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button> 
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Cliente:"  FontWeight="Bold"/>
+                <TextBox x:Name="ClienteTextBox" Margin="40,0" IsEnabled="false" Width="240" Text="{Binding Cliente}"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Concepto:"  FontWeight="Bold"/>
+                <TextBox x:Name="ConceptoTextBox" Margin="25,0" Width="240" Text="{Binding Concepto}"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Monto:"  FontWeight="Bold"/>
+                <TextBox x:Name="MontoTextBox" Margin="40,0" Width="240" Text="{Binding Monto}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Balance:"  FontWeight="Bold"/>
+                <TextBox x:Name="BalanceTextBox" Margin="35,0" Width="240" IsEnabled="False" Text="{Binding Balance}"/>
+            </StackPanel>
+
+
+
+
+            <!--Botones-->
+            <StackPanel Orientation="Horizontal" Margin="0,15">
+                <Button x:Name="NuevoButton" Margin="10,0" Width="80"  Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/nuevo.png" Width="20" Height="20"/>
+                        <Label Content="Nuevo"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="EditarButton" Margin="10,0" Width="80"  Click="EditarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/editar.png" Width="20" Height="20"/>
+                        <Label Content="Editar"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="GuardarButton" Margin="10,0" Width="80"  Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/guardar.png" Width="20" Height="20"/>
+                        <Label Content="Guardar"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="EliminarButton" Margin="10,0" Width="80" Click="EliminarButton_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/eliminar.png" Width="20" Height="20"/>
+                        <Label Content="Eliminar"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

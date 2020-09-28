@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamos\\RegistroPrestamos\\RegistroPrestamos.csproj": {}
+    "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamo\\RegistroPrestamos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamos\\RegistroPrestamos\\RegistroPrestamos.csproj": {
+    "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamo\\RegistroPrestamos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamos\\RegistroPrestamos\\RegistroPrestamos.csproj",
+        "projectUniqueName": "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamo\\RegistroPrestamos.csproj",
         "projectName": "RegistroPrestamos",
-        "projectPath": "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamos\\RegistroPrestamos\\RegistroPrestamos.csproj",
+        "projectPath": "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamo\\RegistroPrestamos.csproj",
         "packagesPath": "C:\\Users\\Hudelsis pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamos\\RegistroPrestamos\\obj\\",
+        "outputPath": "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hudelsis pc\\AppData\\Roaming\\NuGet\\NuGet.Config",

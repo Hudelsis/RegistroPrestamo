@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p1pXh7H+OupzKmJ8wRwl2nLenUuiBPAk2aF1aPu49o4kU+Tb+bU7b79jJ01smUXQYPZ/t/l8paKjvdkT5Aaihw==",
+  "dgSpecHash": "ik6yAKlb+wkj0eyD6+47K4o0pCsPKyat3wlaNw+6Dt/PCTGAP2qN4MAxdXHezjDty4p7f60Qu8qhOm2v4YBcUA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamos\\RegistroPrestamos\\RegistroPrestamos.csproj",
+  "projectFilePath": "C:\\Users\\Hudelsis pc\\source\\repos\\RegistroPrestamo\\RegistroPrestamos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hudelsis pc\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Hudelsis pc\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
