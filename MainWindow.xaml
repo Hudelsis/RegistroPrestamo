@@ -10,11 +10,13 @@
             <MenuItem Header="_Registro">
                 <MenuItem Name="rClientesMenu" Header="Registro de Clientes" Click="rClientesMenu_Click"/>
                 <MenuItem Name="rPrestamosMenu" Header="Registro de prestamos" Click="rPrestamosMenu_Click"/>
+                <MenuItem Name="rMorasMenu"  Header="Registro de Mora" Click="rMorasMenu_Click"/>
             </MenuItem>
 
             <MenuItem Header="_Consultar">
                 <MenuItem Name="cClientesMenu" Header="Consulta de Clientes" Click="cClientesMenu_Click"/>
                 <MenuItem Name="cPrestamosMenu" Header="Consulta de prestamos" Click="cPrestamosMenu_Click"/> 
+                <MenuItem Name="cMorasMenu" Header="Consulta de Moras" Click="cMorasMenu_Click"/>
             </MenuItem>
 
             <MenuItem Name="AyudaMenu" Header="Ayuda" Click="AyudaMenu_Click"/>

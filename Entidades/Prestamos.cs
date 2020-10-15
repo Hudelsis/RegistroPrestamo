@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 
 namespace RegistroPrestamos.Entidades
@@ -23,7 +25,8 @@ namespace RegistroPrestamos.Entidades
 
         public string Concepto { get; set; }
 
-        
+        [ForeignKey("PrestamoId")]
+        public List<MorasDetalle> Detalle { get; set; } = new List<MorasDetalle>();
     }
 
 }

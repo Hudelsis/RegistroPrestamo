@@ -25,39 +25,27 @@
            
             <StackPanel Orientation="Horizontal" Margin="0,5">
                 <Label Content="Fecha:"  FontWeight="Bold"/>
-                <DatePicker x:Name="FechaTextBox" Margin="50,0" Width="240" Text="{Binding Fecha}" />
-            </StackPanel> 
-
-            <StackPanel Orientation="Horizontal" Margin="0,5">
-                <Label Content=" Persona ID:"  FontWeight="Bold"/>
-                <TextBox x:Name="IdPersonaTextBox" Margin="20,0" Text="0" Width="75" />
-
-                <Button x:Name = "BuscarPersonaButton" Margin="5,0"  Width="110" Click="BuscarPersonaButton_Click" >
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/buscar.png" Width="20" Height="20"/>
-                        <Label Content="Buscar"  FontWeight="Bold"/>
-                    </StackPanel>
-                </Button> 
-            </StackPanel>
+                <DatePicker x:Name="FechaTextBox" Margin="53,0" Width="240" Text="{Binding Fecha}" />
+            </StackPanel>  
             
             <StackPanel Orientation="Horizontal" Margin="0,5">
-                <Label Content="Cliente:"  FontWeight="Bold"/>
-                <TextBox x:Name="ClienteTextBox" Margin="40,0" IsEnabled="false" Width="240" Text="{Binding Cliente}"/>
+               <Label Content="Cliente:"  FontWeight="Bold"/>
+                 <ComboBox x:Name="ClienteComboBox" Margin ="45,0" Width="240" SelectedValue="{Binding PersonaId}"/> 
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" Margin="0,5">
                 <Label Content="Concepto:"  FontWeight="Bold"/>
-                <TextBox x:Name="ConceptoTextBox" Margin="25,0" Width="240" Text="{Binding Concepto}"/>
+                <TextBox x:Name="ConceptoTextBox" Margin="30,0" Width="240" Text="{Binding Concepto}"/>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" Margin="0,5">
                 <Label Content="Monto:"  FontWeight="Bold"/>
-                <TextBox x:Name="MontoTextBox" Margin="40,0" Width="240" Text="{Binding Monto}"/>
+                <TextBox x:Name="MontoTextBox" Margin="45,0" Width="240" Text="{Binding Monto}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,5">
                 <Label Content="Balance:"  FontWeight="Bold"/>
-                <TextBox x:Name="BalanceTextBox" Margin="35,0" Width="240" IsEnabled="False" Text="{Binding Balance}"/>
+                <TextBox x:Name="BalanceTextBox" Margin="40,0" Width="240" IsEnabled="False" Text="{Binding Balance}"/>
             </StackPanel>
 
 
@@ -69,13 +57,6 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/nuevo.png" Width="20" Height="20"/>
                         <Label Content="Nuevo"  FontWeight="Bold"/>
-                    </StackPanel>
-                </Button>
-
-                <Button x:Name="EditarButton" Margin="10,0" Width="80"  Click="EditarButton_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/editar.png" Width="20" Height="20"/>
-                        <Label Content="Editar"  FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
 

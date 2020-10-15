@@ -1,4 +1,5 @@
 ﻿using RegistroPrestamos.UI.Registro;
+using RegistroPrestamos.UI.Consultas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,14 +32,18 @@ namespace RegistroPrestamos
             rClientes ventana = new rClientes();
             ventana.Show();
         }
-
         private void rPrestamosMenu_Click(object sender, RoutedEventArgs e)
         {
             rPrestamos ventana = new rPrestamos();
             ventana.Show();
 
         }
+        private void rMorasMenu_Click(object sender, RoutedEventArgs e)
+        {
+           rMoras ventana = new rMoras();
+           ventana.Show();
 
+        }
         private void cClientesMenu_Click(object sender, RoutedEventArgs e)
         {
             cClientes ventana = new cClientes();
@@ -48,15 +53,21 @@ namespace RegistroPrestamos
 
         private void cPrestamosMenu_Click(object sender, RoutedEventArgs e)
         {
+            cPrestamos ventana = new cPrestamos();
+            ventana.Show();
            
 
         }
+        private void cMorasMenu_Click(object sender, RoutedEventArgs e)
+        {
 
+           
+
+        }
         private void AyudaMenu_Click(object sender, RoutedEventArgs e)
         {
 
         }
-        //Hola mundo
-        //Comentario
+        
     }
 }

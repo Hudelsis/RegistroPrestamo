@@ -58,12 +58,14 @@ namespace RegistroPrestamos.UI.Registro
             return esValido; 
         }
 
-        private void desabilitarTextBox(bool estado){ 
-            NombresTextBox.IsEnabled = estado;
-            TelefonoTextBox.IsEnabled = estado;
-            CedulaTextBox.IsEnabled = estado;
-            DireccionTextBox.IsEnabled = estado; 
-        }
+        private void mostrarDatos(){ 
+                IDTextBox.Text = clientes.Id.ToString();
+                NombresTextBox.Text = clientes.Nombres;
+                TelefonoTextBox.Text = clientes.Telefono;
+                CedulaTextBox.Text = clientes.Cedula;
+                DireccionTextBox.Text = clientes.Direccion;
+                BalanceTextBox.Text = clientes.Balance.ToString("N2");
+        } 
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         { 
@@ -74,32 +76,20 @@ namespace RegistroPrestamos.UI.Registro
             clientes = ClientesBLL.Buscar(int.Parse(IDTextBox.Text));
 
             if (clientes != null)
-            {
-                desabilitarTextBox(false); 
-                IDTextBox.Text = clientes.Id.ToString();
-                NombresTextBox.Text = clientes.Nombres;
-                TelefonoTextBox.Text = clientes.Telefono;
-                CedulaTextBox.Text = clientes.Cedula;
-                DireccionTextBox.Text = clientes.Direccion;
-                BalanceTextBox.Text = clientes.Balance.ToString("N2");
-            }else{
-                 this.DataContext = this.clientes;
-            }
-                
+                mostrarDatos();
+            else
+                clientes = new Clientes();
+
+
+         this.DataContext = this.clientes;
+         editando = true; 
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar(); 
             editando = false;
-        }
-
-        private void EditarButton_Click(object sender, RoutedEventArgs e)
-        {
-            editando = true;
-            IDTextBox.IsEnabled = false;
-            desabilitarTextBox(true);
-        }
+        } 
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -143,7 +133,6 @@ namespace RegistroPrestamos.UI.Registro
                 MessageBox.Show("Registro eliminado", "Existo");
             }
             else
-
                 MessageBox.Show("No fue posible eliminar", "Fallo"); 
         }
     }

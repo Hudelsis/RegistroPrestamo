@@ -25,11 +25,15 @@ namespace RegistroPrestamos.UI.Registro
         {
             InitializeComponent();
             Limpiar();
+
+            ClienteComboBox.ItemsSource = ClientesBLL.GetList(p => true);
+            ClienteComboBox.SelectedValuePath = "Id";
+            ClienteComboBox.DisplayMemberPath = "Nombres";
         }
 
         private void Limpiar(){
             IDTextBox.Text = "";
-            IdPersonaTextBox.Text = "";
+            //IdPersonaTextBox.Text = "";
             IDTextBox.IsEnabled = true;
 
             prestamo = new Prestamos();
@@ -47,12 +51,6 @@ namespace RegistroPrestamos.UI.Registro
                 }
             }
 
-            if (IdPersonaTextBox.Text.Length == 0)
-            {
-                esValido = false;
-                MessageBox.Show("Transaccion Fallida, Debe seleccionar un cliente", "Fallo");
-            }
-
             if (ConceptoTextBox.Text.Length == 0)
             {
                 esValido = false;
@@ -66,22 +64,15 @@ namespace RegistroPrestamos.UI.Registro
             }
 
             return esValido; 
-        }
+        } 
 
-        private void desabilitarTextBox(bool estado){
-            FechaTextBox.IsEnabled = estado;
-            IdPersonaTextBox.IsEnabled = estado;
-            ConceptoTextBox.IsEnabled = estado;
-            MontoTextBox.IsEnabled = estado;
-        }
-
-        private void buscarCliente(int id){ 
-            Clientes cliente = new Clientes();
-            if(id > 0){
-                cliente = ClientesBLL.Buscar(id);
-                IdPersonaTextBox.Text = cliente.Id.ToString();
-                ClienteTextBox.Text = cliente.Nombres;
-            }
+        private void mostrarDatos(){
+            IDTextBox.Text = prestamo.PrestamoId.ToString();
+            FechaTextBox.Text = prestamo.Fecha; 
+            ConceptoTextBox.Text = prestamo.Concepto;
+            MontoTextBox.Text = prestamo.Monto.ToString("N2");
+            BalanceTextBox.Text = prestamo.Balance.ToString("N2"); 
+            ClienteComboBox.SelectedValue= prestamo.PersonaId;
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
@@ -92,41 +83,21 @@ namespace RegistroPrestamos.UI.Registro
 
             prestamo = PrestamosBLL.Buscar(int.Parse(IDTextBox.Text));
 
-            if (prestamo != null)
-            {
-                desabilitarTextBox(false); 
-                IDTextBox.Text = prestamo.PrestamoId.ToString();
-                FechaTextBox.Text = prestamo.Fecha; 
-                ConceptoTextBox.Text = prestamo.Concepto;
-                MontoTextBox.Text = prestamo.Monto.ToString("N2");
-                BalanceTextBox.Text = prestamo.Balance.ToString("N2");
-                buscarCliente(prestamo.PersonaId);
-            }else{
-                 this.DataContext = this.prestamo;
-            }
-        }
+            if (prestamo != null) 
+                mostrarDatos();
+            else
+                prestamo = new Prestamos();
 
-        private void BuscarPersonaButton_Click(object sender, RoutedEventArgs e)
-        { 
-            if(IdPersonaTextBox.Text.Length != 0){
-                buscarCliente(int.Parse(IdPersonaTextBox.Text));
-            }
-        }
+            this.DataContext = this.prestamo; 
+            editando = true;
+        } 
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar(); 
             editando = false;
-            IDTextBox.IsEnabled = true;
-            desabilitarTextBox(true);
-        }
-
-        private void EditarButton_Click(object sender, RoutedEventArgs e)
-        {
-            editando = true;
-            IDTextBox.IsEnabled = false;
-            desabilitarTextBox(true);
-        }
+            IDTextBox.IsEnabled = true; 
+        } 
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -146,8 +117,8 @@ namespace RegistroPrestamos.UI.Registro
 
             prestamo.PrestamoId = id;
             prestamo.Fecha = FechaTextBox.Text;
-            prestamo.PersonaId = int.Parse(IdPersonaTextBox.Text);
-            prestamo.Cliente = ClienteTextBox.Text;
+            prestamo.PersonaId = int.Parse(ClienteComboBox.SelectedValue.ToString());
+            prestamo.Cliente = ClienteComboBox.Text;
             prestamo.Concepto = ConceptoTextBox.Text;
             prestamo.Monto = float.Parse(MontoTextBox.Text); 
             prestamo.Balance = prestamo.Monto; 
@@ -180,12 +151,7 @@ namespace RegistroPrestamos.UI.Registro
                 return;
             }
 
-            if (IdPersonaTextBox.Text.Length ==0){
-                MessageBox.Show("Debe seleccionar el prestamo", "Fallo");
-                return;
-            }
-
-            Clientes cliente = ClientesBLL.Buscar(int.Parse(IdPersonaTextBox.Text));
+            Clientes cliente = ClientesBLL.Buscar(int.Parse("1"));
 
               if (PrestamosBLL.Eliminar(int.Parse(IDTextBox.Text)))
             {

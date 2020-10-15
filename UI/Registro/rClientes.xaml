@@ -59,14 +59,7 @@
                         <Image Source="/Resources/nuevo.png" Width="20" Height="20"/>
                         <Label Content="Nuevo"  FontWeight="Bold"/>
                     </StackPanel>
-                </Button>
-
-                <Button x:Name="EditarButton" Margin="10,0" Width="80" Click = "EditarButton_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/editar.png" Width="20" Height="20"/>
-                        <Label Content="Editar"  FontWeight="Bold"/>
-                    </StackPanel>
-                </Button>
+                </Button> 
 
                 <Button x:Name="GuardarButton" Margin="10,0" Width="80" Click = "GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
