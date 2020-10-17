@@ -74,10 +74,10 @@ namespace RegistroPrestamos.BLL
             Contexto contexto = new Contexto();
             try
             {
-                var clientes = contexto.Clientes.Find(id);
-                if (clientes != null)
+                var moras = contexto.Moras.Find(id);
+                if (moras != null)
                 {
-                    contexto.Clientes.Remove(clientes);
+                    contexto.Moras.Remove(moras);
                     paso = contexto.SaveChanges() > 0;
                 }
             }
@@ -93,19 +93,14 @@ namespace RegistroPrestamos.BLL
         }
         
         public static Moras Buscar(int id)
-        {
-            
-            //Moras moras = new Moras();
-            
+        { 
             Contexto contexto = new Contexto();
             Moras moras;
             try
-            {
-                
+            { 
                 moras = contexto.Moras.Include(x => x.Detalle)
                     .Where(x => x.MoraId == id)
-                    .SingleOrDefault();
-                
+                    .SingleOrDefault(); 
             }
             catch (Exception)
             {

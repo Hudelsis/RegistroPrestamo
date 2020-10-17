@@ -13,6 +13,7 @@ namespace RegistroPrestamos.Entidades
         public int PrestamoId { get; set; }
         public float Valor{ get; set; }
 
+
         public  MorasDetalle()
         {
             MoraDetalleId = 0;
@@ -20,6 +21,7 @@ namespace RegistroPrestamos.Entidades
             PrestamoId = 0;
             Valor= 0;
         }
+
 
         public MorasDetalle(int moraId, int prestamoId, float valor)
         {

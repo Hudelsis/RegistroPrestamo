@@ -1,12 +1,10 @@
 using System;
 using System.Text;
 using System.Windows.Controls;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace RegistroPrestamos.Validaciones
 {
-    public class ValidarFeha : ValidationRule
+    public class ValidarFecha : ValidationRule
     {
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {

@@ -166,7 +166,7 @@ namespace RegistroPrestamos.BLL
             }
             return lista;
 
-        }
+        } 
     }
 }
 

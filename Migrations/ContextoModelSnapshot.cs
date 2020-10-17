@@ -78,8 +78,6 @@ namespace RegistroPrestamos.Migrations
 
                     b.HasIndex("MoraId");
 
-                    b.HasIndex("PrestamoId");
-
                     b.ToTable("MorasDetalle");
                 });
 
@@ -117,12 +115,6 @@ namespace RegistroPrestamos.Migrations
                     b.HasOne("RegistroPrestamos.Entidades.Moras", null)
                         .WithMany("Detalle")
                         .HasForeignKey("MoraId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RegistroPrestamos.Entidades.Prestamos", null)
-                        .WithMany("Detalle")
-                        .HasForeignKey("PrestamoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -60,8 +60,8 @@ namespace RegistroPrestamos
         }
         private void cMorasMenu_Click(object sender, RoutedEventArgs e)
         {
-
-           
+            cMoras ventana = new cMoras();
+            ventana.Show();
 
         }
         private void AyudaMenu_Click(object sender, RoutedEventArgs e)

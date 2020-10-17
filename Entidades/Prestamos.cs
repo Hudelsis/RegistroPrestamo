@@ -25,8 +25,7 @@ namespace RegistroPrestamos.Entidades
 
         public string Concepto { get; set; }
 
-        [ForeignKey("PrestamoId")]
-        public List<MorasDetalle> Detalle { get; set; } = new List<MorasDetalle>();
+        
     }
 
 }

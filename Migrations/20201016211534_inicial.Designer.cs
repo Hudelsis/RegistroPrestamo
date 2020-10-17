@@ -9,8 +9,8 @@ using RegistroPrestamos.DAL;
 namespace RegistroPrestamos.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201014203956_Inicial")]
-    partial class Inicial
+    [Migration("20201016211534_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -80,8 +80,6 @@ namespace RegistroPrestamos.Migrations
 
                     b.HasIndex("MoraId");
 
-                    b.HasIndex("PrestamoId");
-
                     b.ToTable("MorasDetalle");
                 });
 
@@ -119,12 +117,6 @@ namespace RegistroPrestamos.Migrations
                     b.HasOne("RegistroPrestamos.Entidades.Moras", null)
                         .WithMany("Detalle")
                         .HasForeignKey("MoraId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RegistroPrestamos.Entidades.Prestamos", null)
-                        .WithMany("Detalle")
-                        .HasForeignKey("PrestamoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -13,17 +13,20 @@ using RegistroPrestamos.Entidades;
 using RegistroPrestamos.BLL;
 using RegistroPrestamos.DAL;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
+
 
 namespace RegistroPrestamos.UI.Registro
 {
      public partial class rMoras : Window
      {
+        //private bool editando = false;
         private Moras moras = new Moras();
+        private Prestamos prestamo = new Prestamos();
 
         public rMoras()
         {
             InitializeComponent();
-            //Constructor
             this.DataContext = moras;
         }
         private void Cargar()
@@ -33,54 +36,93 @@ namespace RegistroPrestamos.UI.Registro
         }
         private void Limpiar()
         {
-            this.moras = new Moras();
+            moras = new Moras();
+            MoraIdTextBox.Text = "";
             this.DataContext = moras;
-        }
+        }   
         private bool Validar()
         {
-            bool Validado = true;
-            if (MoraIdTextBox.Text.Length == 0)
+            if (MoraIdTextBox.Text.Length == 0 || PrestamoTextBox.Text.Length == 0 ||
+                PrestamoTextBox.Text.Length == 0 || ValorTextBox.Text.Length == 0 || MoraIdTextBox.Text.Length == 0)
             {
-                Validado = false;
-                MessageBox.Show("Transaccion Errada", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Favor llenar los campo.", "Obligatorio.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
             }
-            return Validado;
+             if (!Regex.IsMatch(MoraIdTextBox.Text, "^[0-9]+$"))
+            {
+                MessageBox.Show("Id Solo permite un digito del 0 - 9.", "Id.", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
 
+            if (!Regex.IsMatch(PrestamoTextBox.Text, "^[0-9]+$"))
+            {
+                MessageBox.Show("Id Solo permite un digito del 0 - 9.", "MoraId.", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            if (!Regex.IsMatch(PrestamoTextBox.Text, "^[0-9]+$"))
+            {
+                MessageBox.Show("Id Solo permite un digito del 0 - 9.", "PrestamoId.", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            if (!Regex.IsMatch(ValorTextBox.Text, "^[0-9]+$"))
+            {
+                MessageBox.Show("Solo permite un digito del 0 - 9.", "Valor.", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            return true;
         }
-        
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-           
-            Moras encontrado = MorasBLL.Buscar(moras.MoraId);
+           if(MoraIdTextBox.Text.Length <= 0)
+                return;
+
+            Moras encontrado = MorasBLL.Buscar(int.Parse(MoraIdTextBox.Text));
 
             if (encontrado != null)
             {
                 moras = encontrado;
                 Cargar();
-                MessageBox.Show("Articulo Encontrado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Mora Encontrada", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show($"Esta Id de Articulo no fue encontrada.\n\nAsegurese que existe o cree una nueva.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show($"Esta Id de Mora no fue encontrada.\n\nAsegurese que existe o cree una nueva.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Warning);
                 Limpiar();
             }
         }
-         private void AgregarFilaButton_Click(object sender, RoutedEventArgs e)
+        private void BuscarPrestamosButton_Click(object sender, RoutedEventArgs e)
         {
-                            
-         var filaDetalle = new MorasDetalle(Convert.ToInt32(MoraIdTextBox.Text), Convert.ToInt32(PrestamoTextBox.Text), Convert.ToSingle(ValorTextBox.Text));
+             if(PrestamoTextBox.Text.Length > 0){
+                 prestamo = PrestamosBLL.Buscar(int.Parse(PrestamoTextBox.Text));
 
-           moras.Detalle.Add(filaDetalle);
-            Cargar();
-
-           MoraIdTextBox.Clear();
-           ValorTextBox.Clear();
-           PrestamoTextBox.Clear();
-
-
-            
+                 if(prestamo.PrestamoId > 0){
+                     MessageBox.Show("Prestamo Seleccionado");
+                 }else{
+                     MessageBox.Show("Prestamo no encontrado");
+                 }
+             }else{ 
+                     MessageBox.Show("Debe digitar el numero de prestamo");
+             }
         }
-        
+        private void AgregarFilaButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(prestamo.PrestamoId > 0){
+
+                var filaDetalle = new MorasDetalle(moras.MoraId, int.Parse(PrestamoTextBox.Text), float.Parse(ValorTextBox.Text));
+
+                moras.Detalle.Add(filaDetalle);
+                Cargar();
+
+                
+                ValorTextBox.Clear();
+                PrestamoTextBox.Clear();   
+            }else{
+                MessageBox.Show("Prestamo no encontrado");
+            }  
+        }
         private void RemoverFilaButton_Click(object sender, RoutedEventArgs e)
         {
             if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
@@ -98,11 +140,16 @@ namespace RegistroPrestamos.UI.Registro
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
+           //editando = false;
         }
         
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
-        {
-            bool paso = false;
+        {  
+              bool paso = false;
+
+            if (!Validar())
+                return;
+
 
             if (moras.MoraId == 0)
             {
@@ -116,20 +163,20 @@ namespace RegistroPrestamos.UI.Registro
                 }
                 else
                 {
-                    MessageBox.Show("No existe en la base de datos", "ERROR");
+                    MessageBox.Show("No existe en la base de datos", "Error");
                 }
             }
 
             if (paso)
             {
                 Limpiar();
-                MessageBox.Show("Guardado!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Transacciones exitosa.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("Fallo al guardar", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+            {
+                MessageBox.Show("Transacciones  Fallida.", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
-    
-        
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             if (MoraIdTextBox.Text.Length ==0){

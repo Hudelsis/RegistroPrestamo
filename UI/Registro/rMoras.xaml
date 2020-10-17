@@ -5,26 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:m="clr-namespace:RegistroPrestamos.Validaciones"
         mc:Ignorable="d"
-        Title="rMoras" Height="500" Width="800">
+        Title="Registro de Moras" Height="500" Width="800">
     <Grid>
         
          <StackPanel Orientation="Vertical" Margin="10, 5,10,0">
             
             <StackPanel Orientation="Vertical" Margin="0,5">
-                <Label Content="Mora Id:"/>
+                <Label Content="Mora Id:" FontWeight="Bold" />
 
                 <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="MoraIdTextBox" Margin="5,0"  Width="75" Height="20" Text="0"/>
+                    <TextBox x:Name="MoraIdTextBox" Margin="5,0"  Width="75" Height="20" Text=""/>
                     <Button x:Name="BuscarButton" Margin="5,0"  Width="110" Click="BuscarButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Buscar.png" Width="20" Height="20" />
-                            <Label Content="Buscar"/>
+                            <Label Content="Buscar" FontWeight="Bold"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
 
-                <Label Content="Fecha"/>
-                <DatePicker Name="FechaDatePickerTextBox" Grid.Row="1" Grid.Column="1" Margin="5,5,5,">
+                <Label Content="Fecha" FontWeight="Bold"/>
+                <DatePicker Name="FechaDatePickerTextBox"  Margin="5,0">
                    <DatePicker.SelectedDate>
                         <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -34,27 +34,36 @@
                     </DatePicker.SelectedDate>
                 </DatePicker>
 
-                <Label Content="Total"/>
-                <TextBox x:Name="TotalTextBox" Text="{Binding Total}"/>
+                <Label Content="Total" FontWeight="Bold"/>
+                <TextBox x:Name="TotalTextBox" Margin="5,0"  Text="{Binding Total}"/>
 
                 <StackPanel Orientation="Vertical">
                     <GroupBox Header="Detalles de Mora">
                         <StackPanel>
-                            <Label Content="Prestamo"/>
-                            <TextBox x:Name="PrestamoTextBox" Text="{Binding Detalle.PrestamoId}"/>
-                            <Label Content="Valor"/>
+                            <Label Content="Prestamos Id:" FontWeight="Bold"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="PrestamoTextBox" Margin="5,0"  Width="75" Height="20" Text=""/>
+                    <Button x:Name="BuscarPrestamosButton" Margin="5,0"  Width="110" Click="BuscarPrestamosButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Buscar.png" Width="20" Height="20" />
+                            <Label Content="Buscar" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                            <Label Content="Valor Mora" FontWeight="Bold"/>
                             <StackPanel Orientation="Horizontal">
                                 <TextBox x:Name="ValorTextBox" Text="{Binding Detalle.Valor}" Width="300" Height="18"/>
                                 <Button x:Name="AgregarFilaButton" Margin="10,0" Click="AgregarFilaButton_Click" Width="123">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Resources/agregar.png"  Width="20" Height="20"/>
-                                        <Label Content="Agregar fila"/>
+                                        <Label Content="Agregar fila" FontWeight="Bold"/>
                                     </StackPanel>
                                 </Button>
                                 <Button x:Name="RemoverFilaButton" Margin="10,0" Click="RemoverFilaButton_Click" Width="115">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Resources/fila.png"  Width="20" Height="20"/>
-                                        <Label Content="Eliminar fila"/>
+                                        <Label Content="Eliminar fila" FontWeight="Bold"/>
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
@@ -78,19 +87,19 @@
                 <Button x:Name="NuevoButton" Margin="10,0" Width="80" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Nuevo.png" Width="20" Height="20" />
-                        <Label Content="Nuevo" />
+                        <Label Content="Nuevo" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
                 <Button x:Name="GuardarButton"   Margin="10,0" Width="80"  Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Guardar.png" Width="20" Height="20"/>
-                        <Label Content="Guardar" />
+                        <Label Content="Guardar" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
                 <Button x:Name="EliminarButton"  Margin="10,0" Width="80"  Click="EliminarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Eliminar.png" Width="20" Height="20"/>
-                        <Label Content="Eliminar" />
+                        <Label Content="Eliminar" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
 

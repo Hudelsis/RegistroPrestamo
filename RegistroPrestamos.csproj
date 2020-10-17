@@ -37,11 +37,13 @@
 
 	        <ItemGroup>
 
-              <None Remove="Resources/nuevo.png"/>
-              <None Remove="Resources/Guardar.png"/>
-              <None Remove="Resources/Eliminar.png"/>
               <None Remove="Resources/Buscar.png"/>
-              <None Remove="Resources/editar.png"/>
+              <None Remove="Resources/Eliminar.png"/>
+              <None Remove="Resources/fila.png"/>
+              <None Remove="Resources/Guardar.png"/>
+              <None Remove="Resources/nuevo.png"/>
+              <None Remove="Resources/agregar.png"/>
+            
           </ItemGroup>
 
            <ItemGroup>
@@ -50,7 +52,9 @@
             <Resource Include="Resources/Guardar.png"/>
             <Resource Include="Resources/nuevo.png"/>
             <Resource Include="Resources/Buscar.png"/>
-            <Resource Include="Resources/editar.png"/>
+            <Resource Include="Resources/fila.png"/>
+            <Resource Include="Resources/agregar.png"/>
+            
 
           </ItemGroup>
 		

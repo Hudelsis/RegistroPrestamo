@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RegistroPrestamos.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,23 +75,12 @@ namespace RegistroPrestamos.Migrations
                         principalTable: "Moras",
                         principalColumn: "MoraId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MorasDetalle_Prestamos_PrestamoId",
-                        column: x => x.PrestamoId,
-                        principalTable: "Prestamos",
-                        principalColumn: "PrestamoId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_MorasDetalle_MoraId",
                 table: "MorasDetalle",
                 column: "MoraId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MorasDetalle_PrestamoId",
-                table: "MorasDetalle",
-                column: "PrestamoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -103,10 +92,10 @@ namespace RegistroPrestamos.Migrations
                 name: "MorasDetalle");
 
             migrationBuilder.DropTable(
-                name: "Moras");
+                name: "Prestamos");
 
             migrationBuilder.DropTable(
-                name: "Prestamos");
+                name: "Moras");
         }
     }
 }

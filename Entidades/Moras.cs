@@ -18,7 +18,7 @@ namespace RegistroPrestamos.Entidades
         [ForeignKey("MoraId")]
         public List<MorasDetalle> Detalle { get; set; } = new List<MorasDetalle>();
 
-        public Moras()
+         public Moras()
         {
             MoraId = 0;
             Fecha = DateTime.Now;
@@ -32,6 +32,7 @@ namespace RegistroPrestamos.Entidades
             Fecha = fecha;
             Total = total;
         }
+
     }
 
 
